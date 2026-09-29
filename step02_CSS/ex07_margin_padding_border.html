@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+      }
+      div.a {
+        background-color: red;
+        padding-top: 20px;
+        padding-left: 20px;
+        box-sizing: border-box; /* width와 height 크기 유지하면서 padding, border 적용 */
+      }
+      div.b {
+        background-color: green;
+        padding: 20px;
+        box-sizing: border-box;
+        border-style: dashed dotted; /* 상하: dashed / 좌우: dotted */
+        border-width: thick;
+        border-color: aqua violet beige;
+        margin-top: 20px;
+        margin-left: 50px;
+        border-radius: 100px 50px;
+        opacity: 0.5;
+      }
+      div.c {
+        display: table-cell;
+        background-color: blue;
+        box-sizing: border-box;
+        border: solid 5px black;
+        box-sizing: border-box;
+        border-radius: 100px;
+        text-align: center;
+        color: white;
+        vertical-align: middle;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="a">box 모델</div>
+    <div class="b">box 모델</div>
+    <div class="c">box 모델</div>
+  </body>
+</html>

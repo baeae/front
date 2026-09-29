@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // 자바스크립트 순서 : 코드가 작성된 시점부터 아래로
+      //여기부터는 script영역으로 javaScript문법 적용
+      /*여러줄 주석 or 부분주석*/
+
+      //브라우저에 출력하기
+      document.write("<h1>안녕</h1>"); // 자바스크립트에서 마크업 가능 ( write : 렌더링)
+
+      //콘솔에 출력하기
+      console.log("어디에 출력되니?");
+
+      //h2태그에 onclick했을때 css적용하는 기능 작성 함수 작성
+      function test(i) {
+        console.log("test함수호출해야 실행되어요^^ = " + i);
+        //클릭된 element에 css를 적용하고 싶다!!
+        i.style.backgroundColor = "red";
+        i.style.color = "white";
+
+        //h3 태그에 css를 적용하고싶다. ->
+        //  1) h3 객체를 찾는다. -> id로 찾기
+        const h3 = document.getElementById("a"); //const : 상수 , (객체는대부분 상수에 담음)
+        console.log(h3);
+
+        //  2) 찾은 객체에 css적용한다.
+        h3.style.border = "5px double orange";
+      }
+
+      function test2() {
+        console.log("test2 호출됨!!!!!");
+      }
+    </script>
+  </head>
+  <body>
+    <!--JavaScript 적용하는 방법
+        2) 현재 문서안에 script 태그를 열고 닫아서 script 영역안에서 작성하기
+    -->
+    <h2 onclick="test(this)">JavaScript 시작하기!</h2>
+    <h2 onclick="test(this)" id="h2">즐거운 월요일</h2>
+    <h3 id="a">안녕하세요.</h3>
+
+    <script>
+      // 어디서든 열 수 있다. (계속 열고닫을수 있다.)
+      //h2태긍[ mouseover, mouseout 이벤트를 적용하고 싶다.
+      // 1) 이벤트를 적용할 대상(element)찾기
+      const h2 = document.getElementById("h2");
+      console.log(h2);
+
+      // 2) 이벤트를 등록
+      //onmouseover 는 반드시 모두 소문자 작성
+      // h2.onmouseover = test2(); // test2()는 즉시실행(함수지금 호출한다.)
+      h2.onmouseover = test2; //test2 함수를 연결만한다(등록한다)
+      h2.onmouseout = function () {
+        //익명함수 - 재사용 못함
+        console.log("mouseout했어요...");
+      };
+    </script>
+  </body>
+</html>

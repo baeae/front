@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!--'#' : 실행해도 이동을 막아주는것-->
+    <a href="#" data-url="naver.com">네이버</a>
+    <p>
+      <a href="#" data-url="daum.net">다음</a>
+    </p>
+    <p>
+      <a href="#" data-url="kosta.or.kr">코스타</a>
+    </p>
+    <p>
+      <script>
+        document.querySelectorAll("a").forEach((aEle) => {
+          // aEle : a태그 하나하나
+          aEle.addEventListener("click", function () {
+            // location.href = "http://www." + aEle.dataset.url; //자기자신에서 열림
+            opener.location.href = "http://www." + aEle.dataset.url; // opener 리모콘 역할
+            // location : naver.com, daum.net, kosta.or.kr
+          });
+        });
+      </script>
+    </p>
+  </body>
+</html>

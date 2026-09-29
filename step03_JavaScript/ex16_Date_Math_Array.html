@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Date, Math, Array 객체 알아보기</h2>
+
+    <script>
+      //날짜 생성
+      const today = new Date(); //현재날짜
+      //const today = new Date(2025, 9, 10); //연, 월, 일 -> 월은 0부터 시작
+      //const today = new Date(2025, 9, 10, 5, 25, 30);
+
+      console.log(today);
+      console.log(today.getFullYear());
+      console.log(today.getMonth()); //월은 0부터 시작
+      console.log(today.getDate()); // 일
+      //요일은 숫자로 나온다 (0이 일요일, 1이 월요일)
+      console.log(today.getDay()); // 요일
+
+      console.log(today.toLocaleString());
+
+      /////난수발생//////////////////////////////////////////////////
+      console.log("---난수---");
+      let no = Math.random(); // 0.0 ~ 0.9999사이
+      console.log(no);
+      //ex) 1~ 5사이 난수 발생
+      //no = parseInt(no * 5 + 1);
+      no = Math.floor(no * 5 + 1);
+      console.log(no);
+
+      //배열///////////////////////////////////////////
+      const arr1 = [];
+      const arr2 = new Array(1, true, "졸립다");
+      const arr3 = [2, 4, 6, 8, true];
+
+      const arr4 = [
+        [1, 2, 3],
+        [3, 6, 9, 12, 15],
+        ["A", "B"],
+        [true, false, 3.14],
+      ];
+
+      //1차원 배열에 0번지에 객체가 있고 1번지에 객체가 있고 2번지에 객체가 있다.
+      const arr5 = [
+        { name: "hee", age: 20 },
+        { name: "king", age: 25 },
+        { name: "queen", age: 30 },
+      ];
+
+      console.log("=====arr1=======");
+      console.log(arr1.length);
+      console.log(arr1);
+
+      console.log("=====arr2=======");
+      console.log(arr2.length);
+      console.log(arr2);
+
+      console.log("=====arr3=======");
+      console.log(arr3.length);
+      console.log(arr3);
+
+      console.log("=====arr4=======");
+      console.log(arr4.length);
+      console.log(arr4);
+
+      console.log("=====arr5=======");
+      console.log(arr5.length);
+      console.log(arr5);
+    </script>
+  </body>
+</html>

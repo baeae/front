@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>callback 함수 알아보자</h3>
+    <script>
+      // 두수의 값을 전달받아 더하기 하는 함수
+      const add = function (a, b) {
+        return a + b;
+      };
+
+      // 두 수의 값을 전달받아 빼기 하는 함수
+      const minus = (a, b) => a - b;
+
+      //연산 결과를 출력하는 함수
+      const print = (a, b, operator) => {
+        let result;
+        if (operator === "+") {
+          result = add(a, b);
+        } else if (operator === "-") {
+          result = minus(a, b);
+        }
+
+        //출력
+        console.log(`${a} ${operator} ${b} = ${result}`);
+      };
+      ////callback 함수 적용하기///////////////////////////////////////////////////
+      const print2 = (a, b, fun) => {
+        let result = fun(a, b);
+        //출력
+        console.log(`${a}, ${b} = ${result}`);
+      };
+
+      //함수를 호출해보자
+      // print(5, 3, "+");
+      // print(5, 3, "-");
+
+      print2(10, 20, add); //함수 매개값으로 전달
+      print2(10, 20, minus); //함수 매개값으로 전달
+
+      print2(10, 20, function (a, b) {
+        return a * b;
+      }); //함수직접 만들어 매개변수로
+
+      print2(10, 2, (a, b) => a / b); //함수직접 만들어 매개변수로
+    </script>
+  </body>
+</html>

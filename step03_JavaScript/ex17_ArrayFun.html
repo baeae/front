@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>Array 함수</h3>
+    <script>
+      const students = [
+        { name: "A", age: 20, state: true, score: 80 },
+        { name: "B", age: 29, state: true, score: 85 },
+        { name: "C", age: 22, state: false, score: 90 },
+        { name: "D", age: 21, state: true, score: 45 },
+        { name: "E", age: 28, state: false, score: 95 },
+      ];
+      //1. 점수가 90점인 학생 정보 - find() 객체 반환 vs findIndex() 객체 번지수
+      {
+        let re = students.find((student) => {
+          // 한명밖에 못찾음
+          console.log(student);
+          return student.score === 90;
+        }); //콜백 함수가 들어옴
+        console.log("find 결과");
+        console.log(re);
+      }
+
+      {
+        let re = students.findIndex((student) => {
+          console.log(student);
+          return student.score === 90;
+        });
+        console.log("find 결과");
+        console.log(re);
+      }
+
+      //2. 점수가 90점인 이상인 모든 학생 - filter()
+      {
+        let re = students.filter((student) => student.score >= 90);
+        console.log("filter 결과");
+        console.log(re);
+      }
+
+      //3. 수강중(state-true) 학생들만 골라서 배열로 만들기.-filter()
+      {
+        let re = students.filter((student) => student.state);
+        console.log("filter 결과 - state-true");
+        console.log(re);
+      }
+      //4.학생 배열에서 점수만 뽑아서 배열로 만들기 - map()
+      {
+        let re = students.map((student) => student.score);
+        console.log("filter 결과");
+        console.log(re);
+      }
+
+      //5.학생 들중에 점수가 50점 보다 낮은 친구 있는지 없는지 체크하기-some()
+      {
+        let re = students.some((student) => student.score <= 40);
+        console.log("some 결과");
+        console.log(re);
+      }
+
+      //6. 모든 학생들의 점수가 80이상인지 체크 -every()
+      {
+        let re = students.every((student) => student.score >= 80);
+        console.log("every 결과");
+        console.log(re);
+      }
+      //7.학생들의 평균점수를 구하기 - reduce()
+      console.log("---reduce---------------");
+      {
+        let re = students.reduce((pre, curr) => {
+          //return(반환되는값) 이 없으면 받아들이는 값이 없어 이전값이 없음-> return값에 따라 pre(이전값) 이 정해진다.
+          console.log(pre);
+          console.log(curr.score);
+
+          console.log("----------------");
+          // return pre + curr.score;// 문자열에 + 연결하면 값이 문자로 연결되어 출력된다.
+          return pre + curr.score;
+        }, 0); // 두번째 인자값은 pre 초기값 세팅
+        console.log("re = " + re);
+      }
+
+      {
+        let re = students.reduce((pre, curr) => pre + curr.score, 0); // 두번째 인자값은 pre 초기
+
+        console.log(re / students.length);
+      }
+
+      //8. 학생들의 모든 점수를 구해서 하나의 string으로 변환(map , join)
+      {
+        let re = students.map((student) => student.score).join(" / "); //join - 매개값 생략하면 기본이 ',' 이다.
+
+        console.log(re);
+      }
+      //9.학생들의 모든 점수를 배열로 만들어서 50점 이상인 학생들만 뽑아서 하나의 string으로 변환 -  (map,filter,join,)
+      {
+        let re = students
+          .map((student) => student.score) // map 결과 [ 80, 85, 90, 45, 95 ]
+          .filter((score) => score >= 50) // filter 결과 [ 80, 85, 90, 95]
+          .join("/"); // join rufrhk 80/85/90/95
+        console.log(re);
+      }
+
+      console.log("--sort() vs toSorted----");
+      //10.학생들의 점수를 정렬하기. - sort();
+      {
+        //let re = students.sort((s1, s2) => s1.score - s2.score); // sorted는 정렬 후에 원 배열이 유지 되지 않고 정렬된 배열로 유지된다.
+        let re = students.toSorted((s1, s2) => s1.score - s2.score); // toSorted는 정렬 후에 원 배열이 유지 된다.
+        console.log(re);
+        console.log("---정렬후 students info------");
+        console.log(students);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 자식에게 height: 50% 적용하기 위함 */
+      /* body,
+      html {
+        height: 100%;
+      } */
+
+      div.outer {
+        background-color: skyblue;
+        /* width: 50%; */
+        /* %의 높이는 부모의 크기의 비율에 맞춰 %가 적용된다. */
+        /* height: 50%; */
+
+        /* 뷰 포트에 미례해서 크기 적용 */
+        width: 50vw; /* view width */
+        height: 50vh; /* view height */
+        height: 40v;
+        font-size: 32px;
+      }
+      .a {
+        background-color: red;
+        font-size: 1.5em; /* 부모의 크기(32px)를 기준으로 1.5배? */
+      }
+
+      .b {
+        background-color: green;
+        font-size: 1rem; /* 최상위 루트(html, body - 16px)를 기준으로 1배 */
+      }
+
+      .c {
+        background-color: blue;
+        font-size: 20px; /* 부모의 크기와 관련 없이 크기 지정 */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      단위: em vs rem vs px
+      <div class="a">em: 부모 노드(outer)를 기준으로 계산</div>
+      <div class="b">rem: root 노드(html) 기준으로 계산</div>
+      <div class="c">px: 해상도 기준으로 계산</div>
+    </div>
+  </body>
+</html>

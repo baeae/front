@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        border: 1px red solid;
+        width: 200px;
+        height: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>계산해보자</h2>
+    <button id="btn">계산</button>
+    <div id="result"></div>
+
+    <script>
+      const click2 = () => {
+        let num1 = prompt("숫자를 입력하세요.");
+        let ope = prompt("연산기호를 입력하세요.(+, -, *, /)");
+        let num2 = prompt("두번째 숫자를 입력하세요.");
+
+        fail(num1, ope, num2);
+      };
+
+      const btn = document.querySelector(`#btn`);
+      btn.onclick = click2;
+
+      const fail = (num1, ope, num2) => {
+        const operator =
+          ope === "+" || ope === "-" || ope === "*" || ope === "/";
+
+        if (isNaN(num1) || isNaN(num2) || !operator) {
+          let re = confirm("다시할래?");
+          if (re === true) {
+            return click2();
+          } else {
+            return;
+          }
+        }
+
+        let n1 = parseInt(num1);
+        let n2 = parseInt(num2);
+
+        if (ope === "+") {
+          result = n1 + n2;
+        } else if (ope === "-") {
+          result = n1 - n2;
+        } else if (ope === "*") {
+          result = n1 * n2;
+        } else if (ope === "/") {
+          result = n1 / n2;
+        }
+
+        document.querySelector("#result").innerText =
+          `${n1} ${ope} ${n2} = ${result}`;
+      };
+    </script>
+  </body>
+</html>

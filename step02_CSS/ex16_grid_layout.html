@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        height: 100vh;
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        grid-template-rows: 100px auto 150px;
+
+        grid-template-areas: /*셀을 합칠 영역의 이름을 설정*/
+          "header header"
+          "main aside"
+          "footer footer";
+      }
+      header {
+        background-color: aqua;
+        grid-area: header;
+      }
+      main {
+        background-color: yellow;
+        grid-area: main;
+      }
+      aside {
+        background-color: pink;
+        grid-area: aside;
+      }
+      footer {
+        background-color: bisque;
+        grid-area: footer;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        opacity: 0.8;
+        border-radius: 10px;
+      }
+
+      .main {
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 100px;
+        padding: 50px;
+        gap: 10px;
+
+        grid-template-areas:
+          "a a a"
+          "b c c"
+          "d e f"
+          "g e f";
+      }
+      .img1 {
+        grid-area: a;
+      }
+      .img2 {
+        grid-area: b;
+      }
+      .img3 {
+        grid-area: c;
+      }
+      .img4 {
+        grid-area: d;
+      }
+      .img5 {
+        grid-area: e;
+      }
+      .img6 {
+        grid-area: f;
+      }
+      .img7 {
+        grid-area: g;
+      }
+    </style>
+  </head>
+  <body>
+    <header>header</header>
+    <main>
+      <div class="main">
+        <img src="https://picsum.photos/180/200" alt="" class="img1" />
+        <img src="https://picsum.photos/222/200" alt="" class="img2" />
+        <img src="https://picsum.photos/132/200" alt="" class="img3" />
+        <img src="https://picsum.photos/177/200" alt="" class="img4" />
+        <img src="https://picsum.photos/111/200" alt="" class="img5" />
+        <img src="https://picsum.photos/275/200" alt="" class="img6" />
+        <img src="https://picsum.photos/525/200" alt="" class="img7" />
+      </div>
+    </main>
+    <aside>aside</aside>
+    <footer>footer</footer>
+  </body>
+</html>

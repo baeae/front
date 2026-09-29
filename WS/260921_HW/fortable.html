@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h2 {
+        width: 650px;
+        text-align: center;
+      }
+      table {
+        border: solid red;
+        border-collapse: collapse;
+        width: 650px;
+        height: 300px;
+      }
+      #id {
+        border: solid thin;
+        text-align: center;
+      }
+      th {
+        background-color: pink;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>구구단</h2>
+    <div id="gugudan">
+      <script>
+        document.write("<table>");
+        document.write("<tr>");
+        for (let l = 2; l <= 9; l++) {
+          document.write("<th id = 'id'>");
+          document.write(l + "단");
+          document.write("</th>");
+        }
+        document.write("</tr>");
+        for (let i = 1; i <= 9; i++) {
+          document.write("<tr id = 'id'>");
+          for (let j = 2; j <= 9; j++) {
+            document.write("<td id = 'id'>");
+            document.write(j);
+            document.write(" * ");
+            document.write(i);
+            document.write(" = ");
+            document.write(i * j);
+            document.write("</td>");
+          }
+
+          document.write("</tr>");
+        }
+
+        document.write("</table>");
+      </script>
+    </div>
+  </body>
+</html>

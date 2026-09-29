@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #signup input[type=text], input[type=tel]{
+            border : 1px solid #ccc;
+            border-radius: 3px;
+            padding: 5px;
+            width: 200px;
+        }
+        #signup input:not([type=radio]){
+            border : 1px solid #ccc;
+            border-radius: 3px;
+            padding: 5px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <form action="" id ="signup">
+    <fieldset>
+        <legend>개인정보</legend>
+                <label for="id">이름 </label>
+                <input type="text" name = "id" id="signup" >
+                <br>
+                <label for="num">연락처 </label> 
+                <input type="tel" name="number" id="signup">
+    </fieldset>
+     <fieldset>
+    <legend>객실형태</legend>
+    <ul>
+        <li>
+            <input type="radio" name = "room" id = "basic">
+            <label for="basic">기본형(최대2인)</label>
+        </li>
+        <li>
+            <input type="radio" name="room" id="family">
+            <label for="family">가족형(최대8인)</label>
+        </li>
+    </ul>
+    </fieldset>
+</form>
+</body>
+</html>

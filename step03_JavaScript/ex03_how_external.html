@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!--src는 외부의 js연결할때 사용한다.-->
+    <script src="./js/basic.js" ;>
+      //여기에 js문장을 작성하면 무시된다.(src있을때)
+      alert("팝업으로 메시지 출력할때 사용한다. - 1");//alert: 알림창
+    </script>
+
+    <!-- defer를 넣으면 병렬로(dom파싱 + js다운)처리하되
+     js실행은 dom파싱 끝나고 한다. -->
+    <script src="./js/second.js" defer></script>
+
+    <script>
+      alert("팝업으로 메시지 출력할때 사용한다. - 2");
+    </script>
+  </head>
+  <body>
+    <!--JavaScript 적용하는 방법
+        2) 현재 문서안에 script 태그를 열고 닫아서 script 영역안에서 작성하기
+    -->
+    <h2 onclick="test(this)">JavaScript 시작하기!</h2>
+    <h2 onclick="test(this)" id="h2">즐거운 월요일</h2>
+    <h3 id="a">안녕하세요.</h3>
+
+    <!--
+    <script src="./js/second.js">
+      // 스크립트를 밑으로 내리는 이유
+      //  1) 오래걸리니까 일단 먼저 뛰우기 위해서
+      //  2) 마크업을 접근하려할때 돔을 먼저 만나지못하면 인식 못하기 떄문에
+    </script> 
+    -->
+  </body>
+</html>

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form name="form">
+      ID : <input type="text" name="id" /><span id="idSpan"></span>
+      <p>age : <input type="text" name="age" /><span></span></p>
+      <p>email : <input type="text" name="email" /> <span></span></p>
+      <p></p>
+
+      <fieldset>
+        <legend>주민번호</legend>
+        <input type="text" size="6" name="jumin1" /> -
+        <input type="text" size="7" name="jumin2" /><span></span>
+        <p>
+          성별 :
+          <input type="radio" name="gender" value="남자" />남자
+          <input type="radio" name="gender" value="여자" />여자
+        </p>
+      </fieldset>
+    </form>
+
+    <script>
+      document
+        .querySelector("[name = id]")
+        .addEventListener("focus", function () {
+          // focus이벤트가 일어나면 fuction을 해
+          event.target.style.border = "double 5px red";
+          document.querySelector("#idSpan").innerHTML = "";
+        });
+
+      //허용 가능한 문자를 저장
+      let data = "qwertyuiopasdfghjklzxcvbnm$@0987654321";
+
+      //id박스에 커서를 잃었을때(blur) id의 값이 영문인지를 체크한다.(영문으로만 되야한다.)
+      document
+        .querySelector("[name = id]")
+        .addEventListener("blur", function () {
+          // blur이벤트가 일어나면 fuction을 해
+          event.target.style.border = "solid 1px gray";
+          //console.log(event.target.value);
+          let inputValue = event.target.value;
+
+          for (let i = 0; i < inputValue.length; i++) {
+            let ch = inputValue.charAt(i);
+            //console.log(ch.toLocaleLowerCase());//toLocaleLowerCase() :소문자로 다 변환
+            if (data.indexOf(ch.toLocaleLowerCase()) == -1) {
+              //ch가 data에 있는지 확인(ch가 data에 -1(없다면)이면)
+              console.log("잘못");
+              document.querySelector("#idSpan").innerHTML =
+                "<strong style ='color: red'>영문만 입력하세요</strong>"; //<strong> : 강조 태그
+              return; //함수 빠져나간다.
+            }
+          }
+        });
+
+      ///나이에 숫자 유무 체크////////////////////////////////////////////
+      document
+        .querySelector("[name=age]")
+        .addEventListener("blur", function () {
+          //age박스에 있는 값을 조회해서 숫자인지를 체크한다.
+
+          numberCheck(event.target); //event.target 는 event를 발생시키는 name=age 를 가르킨다
+        });
+
+      const numberCheck = function (obj) {
+        // obj는 객체 전달
+        if (isNaN(obj.value)) {
+          // value는 객체의 값을 가져와야하기때문에 value를쓴다
+          //숫자 아니니까 메시지 출력
+          obj.nextElementSibling.innerHTML =
+            "<strong style ='color: red'>숫자만 입력하세요.<strong>";
+          obj.value = "";
+          obj.focus();
+          return true; //숫자아니다.
+        } else {
+          obj.nextElementSibling.innerHTML = "";
+          return false; //숫자다. (성별 체크할때 사용)
+        }
+      };
+
+      //////////////////////////////////////////////
+      //주민번호 앞자리 6자리가 되면 커서 이동시킨다.
+      document
+        .querySelector("[name=jumin1]")
+        .addEventListener("keyup", function () {
+          // keyup : 키보드를 땔때마다 체크
+
+          //주민번호 앞자리 숫자유무 체크
+          let inputValue = event.target.value;
+          if (isNaN(inputValue)) {
+            event.target.value = inputValue.substring(0, inputValue.length - 1);
+          }
+
+          if (event.target.value.length === 6) {
+            //커서 이동
+            event.target.nextElementSibling.focus();
+          }
+        });
+
+      //////////////////////////////////////////////////
+      //주민번호 뒷자리 숫자유무 체크하고 숫자이면 성별체크
+      document
+        .querySelector("[name=jumin2]")
+        .addEventListener("blur", function () {
+          //숫자유무체크
+          if (!numberCheck(event.target)) {
+            //성별을 체크하자.
+            let genderList = document.querySelectorAll("[name=gender]"); //리스트형태로
+            //console.log(genderList);
+            if (event.target.value.charAt(0) === "1") {
+              //genderList[0].setAttribute("checked",); // 아에 checked 속성을 추가 둘다 속성이 들어가 있어 값을 바꿔도 변화가 없음
+              genderList[0].checked = true; // 값을 변경하는것
+            } else {
+              //genderList[1].setAttribute("checked");
+              genderList[1].checked = true;
+            }
+          }
+
+          //성별
+        });
+    </script>
+  </body>
+</html>

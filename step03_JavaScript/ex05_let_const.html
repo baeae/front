@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 style="color: tomato">집에갈시간 얼마안남았어요</h1>
+    <h3>변수에 대해 알아보자 (var-ES5이전), (let vs const-ES6)</h3>
+
+    <script>
+      // 변수 선언하는 방법
+      /*
+        let 변수이름;
+        let 변수이름=값;
+        변수이름=값; // let키워드 생략하면 (var의 특징이된다. -> 그러므로 let 쓰려면 꼭 써야한다.)
+        
+        let or const는 동일한 이름 또 선언 불가
+                      선언전에 사용 못함(호이스팅은 되지만 일시적사각지대가 만들어져 접근 불가-TDZ)
+        
+        */
+      let a; // undefined
+      let b = 20; //number
+      c = 3.14; //var키워드 생략 //number
+
+      //브라우저 출력
+      document.write("<h4>");
+      document.write("a = " + a + "," + typeof a + "<br>");
+      document.write("b = " + b + "," + typeof b + "<br>");
+      document.write("c = " + c + "," + typeof c + "<hr>");
+
+      // 값변경
+      a = "안녕하세요."; //string
+      b = new Array(1, "hi", 20, 3.14, true); //다양한값 넣을 수 있음 // object
+      c = false; // boolean
+
+      document.write("a = " + a + "," + typeof a + "<hr>");
+      document.write("b = " + b + "," + typeof b + "<hr>");
+      document.write("c = " + c + "," + typeof c + "<hr>");
+
+      //////var 특징 학습/////////////////////////////////////////////////////////
+      // 1. var - 동일한 이름의 변수 또는 함수를 또 선언한다면 ? - Ok (호이스팅 때문에 가능)
+      //var a = "졸지말아요";
+      document.write("a = " + a + "," + typeof a + "<hr>");
+
+      // 2. let - 변수 또는 함수를 선언전에 사용불가
+      //document.write("age = " + age + "," + typeof age + "<hr>");
+      //document.write("addr = " + addr + "," + typeof addr + "<br>");
+
+      let age;
+      let addr = "seoul"; //초기값은 저장하지 않고 올라가서 초기화 되지 않음
+
+      document.write("</h4>");
+    </script>
+    <hr />
+    <h3>함수 만들어보자 - 호이스팅 test</h3>
+    <script>
+      // test(); //선언전 호출안됨
+
+      //함수 표현식 문법
+      let test = function () {
+        alert("1");
+      };
+
+      /*function test() {// 동일한 이름 사용안됨
+        alert("2");
+      }*/
+
+      test(); //함수 호출
+    </script>
+
+    <hr />
+    <h3>변수의 scope에 대해서 알아보자</h3>
+    <script>
+      let i = 0; //전역변수
+      function test2() {
+        let i = 5; //지역변수
+        let j = 20; //지역변수
+        k = 50; //var생략하면 무조건 전역변수가 된다.
+
+        console.log("i = " + i);
+        console.log("this.i = " + this.i); //test2를 밖에서 호출했으므로 this는 전역변수를 가르킨다
+        console.log("j = " + j);
+        console.log("k = " + k);
+      }
+
+      function test3() {
+        // console.log("전 : nickName = " + nickName); 선언전 못씀
+        console.log("test call");
+        console.log("i = " + i);
+        console.log("this.i = " + this.i); //test2를 밖에서 호출했으므로 this는 전역변수를 가르킨다
+        //console.log("j = " + j);
+        console.log("k = " + k);
+
+        //console.log("전 : index = " + index);
+
+        //자바스크립트는 변수의 scope이 선언위치의 함수 단위이다. 즉 {}블록단위 아니다
+        for (let index = 0; index <= 10; index++) {
+          //기능
+        }
+
+        // console.log("후 : index = " + index);
+
+        {
+          let nickName = "희정";
+        }
+        // console.log("후 : nickName = " + nickName);
+      }
+
+      test2();
+      test3();
+
+      //const는 상수이다. 선언과 동시에 반드시 초기값 필수, 값변경 불가.
+      const info = "하이";
+      let info2;
+
+      // 값변경 -> 불가
+      // info = "안녕";
+
+      //함수표현식
+      let stop = function () {};
+      const move = function () {}; // 객체들은 주로 const를 많이 쓴다
+
+      stop(); //호출해서 사용한다.
+
+      stop = "안녕";
+    </script>
+
+    <!--
+    <script>
+      test2(); 이미 위에서 만났기때문에 됨
+    </script>
+    -->
+  </body>
+</html>

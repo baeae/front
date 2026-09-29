@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h2 {
+        width: 650px;
+        text-align: center;
+      }
+      table {
+        border: double red;
+        border-collapse: collapse;
+        width: 650px;
+        height: 100px;
+      }
+      th {
+        border: solid thin;
+        text-align: center;
+      }
+      td {
+        border: solid thin;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>성적표</h2>
+    <script>
+      let name = prompt("이름을 입력하세요.", "홍길동");
+      let kor = prompt("국어 점수를 입력하세요");
+      let eng = prompt("영어 점수를 입력하세요");
+      let math = prompt("수학 점수를 입력하세요");
+
+      document.write("<table>");
+      document.write("<tr>");
+      document.write("<th>이름</th>");
+      document.write("<th>국어</th>");
+      document.write("<th>영어</th>");
+      document.write("<th>수학</th>");
+      document.write("<th>총점</th>");
+      document.write("<th>평균</th>");
+      document.write("<th>등급</th>");
+      document.write("</tr>");
+
+      document.write("<tr>");
+      document.write("<td>");
+
+      document.write(name);
+      document.write("</td>");
+      document.write("<td>");
+
+      document.write(kor);
+      document.write("</td>");
+      document.write("<td>");
+
+      document.write(eng);
+      document.write("</td>");
+      document.write("<td>");
+
+      document.write(math);
+      document.write("</td>");
+      document.write("<td>");
+      document.write(parseInt(kor) + parseInt(eng) + parseInt(math));
+      document.write("</td>");
+      document.write("<td>");
+      let grade = (parseInt(kor) + parseInt(eng) + parseInt(math)) / 3;
+      document.write(grade.toFixed(2));
+      document.write("</td>");
+      document.write("<td>");
+      if (grade >= 90) {
+        document.write("수");
+      } else if (grade >= 80) {
+        document.write("우");
+      } else if (grade >= 70) {
+        document.write("미");
+      } else if (grade >= 60) {
+        document.write("양");
+      } else {
+        document.write("가");
+      }
+      document.write("</td>");
+      document.write("</tr>");
+
+      document.write("</table>");
+    </script>
+  </body>
+</html>

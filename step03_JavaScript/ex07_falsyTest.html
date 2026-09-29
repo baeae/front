@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>자바스크립의 false 개념</h3>
+    <script>
+      /*
+         자바스크립트에는 7개의 false가 있다.
+            => false, 0, -0, undefined, NaN, ""null 모두 조건식에서 false 처리된다.   
+        */
+
+      //함수 작성 = 함수 표현식
+      const test = function (name) {
+        console.log("===================");
+        /*
+         1) false || 문장
+         2) true && 문장
+        */
+        name && console.log(`${name}님 반가워요~~`);
+      };
+
+      //함수 호출해 보자
+      let a = false;
+      let b = 0;
+      let c = -0;
+      let d = "";
+      let e = null;
+      let f = undefined;
+      let g = NaN;
+
+      let h = "희정";
+
+      test(h); //함수 호출
+    </script>
+  </body>
+</html>

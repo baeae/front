@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <fieldset>
+        <legend>취미선택</legend>
+        <input type="checkbox" name="all" value="all" />
+        <span id="span">전체선택</span>
+        <p>
+          <input type="checkbox" name="hobby" value="등산" />등산
+          <input type="checkbox" name="hobby" value="수영" />수영
+          <input type="checkbox" name="hobby" value="낚시" />낚시
+          <input type="checkbox" name="hobby" value="놀기" />놀기
+          <input type="checkbox" name="hobby" value="먹기" />먹기
+
+          <input type="button" value="클릭" />
+        </p>
+      </fieldset>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+      document
+        .querySelector("[value=클릭]")
+        .addEventListener("click", function () {
+          //alert(document.querySelectorAll("[name = hobby]")[0].value); // 배열이여야 하니까 all 이붙어야함 왜냐하면 all 안붙으면 한개만 찾으니까
+
+          /*document.querySelectorAll("[name = hobby]").forEach(function (ckEle) {
+               if (ckEle.checked) {
+                 alert(ckEle.value);
+               }
+             });*/
+          let data = "취미 : ";
+          document
+            .querySelectorAll("[name = hobby]:checked")
+            .forEach(function (ckEle) {
+              //alert(ckEle.value);
+              data += ckEle.value + " , ";
+            });
+
+          //div 태그에 추가
+          document.querySelector("#result").innerHTML = data;
+        });
+
+      //////전체 선택 or 전체 해지/////////////////////////////////////////////////////
+
+      document
+        .querySelector("[name = all]")
+        .addEventListener("click", function () {
+          //alert(event.target.checked); // event.target = "name = all"
+
+          /* if (event.target.checked) {
+            document
+              .querySelectorAll("[name = hobby]")
+              .forEach(function (ckEle) {
+                ckEle.checked = true;
+              });
+          } else {
+            document
+              .querySelectorAll("[name = hobby]")
+              .forEach(function (ckEle) {
+                ckEle.checked = false;
+              });
+          }*/
+
+          document.querySelectorAll("[name = hobby]").forEach(function (ckEle) {
+            ckEle.checked = event.target.checked;
+          });
+
+          //span 태그의 content내용 변경하기
+          let span = document.querySelector("#span");
+          event.target.checked
+            ? (span.innerText = "전체해지 ")
+            : (span.innerText = "전체선택");
+        });
+    </script>
+  </body>
+</html>

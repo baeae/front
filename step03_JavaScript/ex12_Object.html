@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>Object 만들기 (key 와 value 개념)</h3>
+    <script>
+      //객체 만들기
+      const person = {
+        name: "희정",
+        age: 20,
+        print: function () {
+          console.log("person의 print call....");
+          return this.name + "님 나이는 " + this.age + "입니다.";
+        },
+      };
+
+      //객체 접근
+      console.log(person);
+      console.log(person.name);
+      console.log(person.age);
+
+      console.log(person["name"]); //호출하는 다른 방법
+      console.log(person["age"]);
+
+      console.log("---------------");
+
+      person.age = 55;
+      person.name = "미미";
+
+      let re = person.print();
+      console.log("re = " + re);
+
+      console.log("---key-----------");
+      //Object의 ket와 value를 한 쌍으로 조회하고 싶다.
+      let keys = Object.keys(person); //person의 키들을 가져오는것
+      console.log(keys);
+
+      console.log("---values-----------");
+      let values = Object.values(person); //person의 value를 가져오는것
+      console.log(values);
+
+      for (let key of keys) {
+        // of : keys 값들을 하나씩 꺼내서 key에 담는다
+        console.log(key + " = " + person[key]); //키들을 가지고 value값 가져온것
+      }
+
+      console.log("-------------");
+      for (let p in person) {
+        // person안에서 속성값만 꺼내줌
+        console.log(p);
+        console.log(person[p]);
+      }
+    </script>
+  </body>
+</html>
