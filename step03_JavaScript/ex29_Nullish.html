@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Nullish 문법 - 값1 ?? 값2</h2>
+    <!-- 값 1이 null 또는 undefiend 일때만 오른쪽 값2를 실행한다.-->
+
+    <script>
+      {
+        const name = "hee";
+        const userName = name || "geust";
+
+        console.log("이름은 " + userName);
+      }
+
+      {
+        const name = null;
+        const userName = name || "geust";
+
+        console.log("이름은 " + userName);
+      }
+
+      {
+        const name = 0;
+        const userName = name || "geust";
+
+        console.log("이름은 " + userName);
+      }
+
+      {
+        const name = undefined;
+        const userName = name || "geust";
+
+        console.log("이름은 " + userName);
+      }
+
+      {
+        const name = -0;
+        const userName = name || "geust";
+
+        console.log("이름은 " + userName);
+      }
+
+      console.log("--null or undefined 일때만 false로 보자.............");
+      {
+        const name = "hee";
+        const userName = name ?? "geust";
+
+        console.log("이름은 " + userName);
+      }
+
+      {
+        const name = null;
+        const userName = name ?? "geust";
+
+        console.log("이름은 " + userName);
+      }
+
+      {
+        const name = 0;
+        const userName = name ?? "geust";
+
+        console.log("이름은 " + userName);
+      }
+
+      {
+        const name = undefined;
+        const userName = name ?? "geust";
+
+        console.log("이름은 " + userName);
+      }
+
+      {
+        const name = -0;
+        const userName = name ?? "geust";
+
+        console.log("이름은 " + userName);
+      }
+
+      {
+        const name = "";
+        const userName = name ?? "geust";
+
+        console.log("이름은 " + userName);
+      }
+
+      console.log("===함수====");
+      function greet(name) {
+        let userName = name ?? "Guest";
+        console.log(`Hello, ${userName}`);
+      }
+
+      greet("Bob"); // Hello, Bob
+      greet(null); // Hello, Guest
+      greet(); // Hello, Guest // () 공백이면 undefined 로 들어감
+      greet(""); //Hello, Guest
+    </script>
+  </body>
+</html>
