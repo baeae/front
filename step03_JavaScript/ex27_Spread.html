@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>spread 연산자</h3>
+
+    <!-- 배열이나 객체를 펼쳐서 복사하거나 병합할때 사용한다. -->
+
+    <script>
+      {
+        //배열
+        const arr1 = [1, 2, 3];
+
+        //기존방식으로 배열 복사해보자
+        const arr2 = arr1;
+        console.log(arr1);
+        console.log(arr2);
+        console.log(arr1 === arr2);
+
+        //arr1에 추가
+        arr1.push(4);
+        console.log(arr1);
+        console.log(arr2);
+      }
+      console.log(" -- Spread 연산자 이용한 배열 --");
+      {
+        const arr1 = [1, 2, 3];
+
+        //Spread 연산자로 배열 복사해보자
+        const arr2 = [...arr1];
+
+        console.log(arr1);
+        console.log(arr2);
+        console.log(arr1 === arr2);
+
+        //arr1에 추가
+        arr1.push(4);
+        console.log(arr1);
+        console.log(arr2);
+      }
+
+      console.log("------객체 배열 복사----------");
+      {
+        const arr1 = [
+          { name: "hee", age: 20 },
+          { name: "king", age: 22 },
+        ];
+        const arr2 = [...arr1];
+
+        console.log(arr1);
+        console.log(arr2);
+        console.log(arr1 === arr2);
+
+        console.log("arr1의 0번지의 이름을 변경해보자");
+        arr1[0].name = "희정";
+
+        console.log(arr1);
+        console.log(arr2); //주소를 들고오기 때문에 2번도 바뀐다
+      }
+
+      console.log("--객체 사용하기---");
+      {
+        const obj1 = { name: "hee", age: 20 };
+        const obj2 = obj1;
+
+        console.log(obj1);
+        console.log(obj2);
+        console.log(obj1 === obj2);
+
+        obj1.name = "미미";
+        console.log(obj1);
+        console.log(obj2);
+      }
+
+      console.log("--객체 Spread사용하기---");
+      {
+        const obj1 = { name: "hee", age: 20 };
+        const obj2 = { ...obj1 };
+
+        console.log(obj1);
+        console.log(obj2);
+        console.log(obj1 === obj2);
+
+        obj1.name = "미미";
+        console.log(obj1);
+        console.log(obj2);
+      }
+
+      console.log("--객체 또는 배열을 합치기---");
+      {
+        const arr1 = [1, 2, 3];
+        const arr2 = [10, 20, ...arr1, 30, 40];
+
+        console.log(arr1);
+        console.log(arr2);
+
+        const arr3 = [...arr1, ...arr2];
+        console.log(arr3);
+
+        //배열의 일부분만 합치기
+        const arr4 = [0, 1, 2, ...arr3.slice(2, 6)];
+        console.log(arr4);
+
+        const obj1 = { name: "hee", age: 20 };
+        const obj2 = { addr: "seoul" };
+
+        const obj3 = { ...obj1, ...obj2 };
+        console.log(obj3);
+      }
+
+      console.log("--함수 매개변수로 Spread---");
+      const test01 = function (arr) {
+        arr.push(400);
+        console.log(arr);
+      };
+      //함수호출
+      let a = [100, 200, 300];
+      test01(a);
+
+      console.log("--함수 호출부 --");
+      console.log(a);
+
+      console.log("--Spread 이용하기 --");
+      const test02 = function (arr) {
+        arr.push(400);
+        console.log(arr);
+      };
+      //함수호출
+      let b = [100, 200, 300];
+      test02([...b]);
+
+      console.log("--함수 호출부 --");
+      console.log(b);
+    </script>
+  </body>
+</html>
