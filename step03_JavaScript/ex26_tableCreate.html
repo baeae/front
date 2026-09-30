@@ -36,20 +36,29 @@
       let index = 0;
       document.querySelector("#add").addEventListener("click", () => {
         let table = document.getElementById("table");
-        let row = table.insertRow();
-        let cell1 = row.insertCell(0);
+        let row = table.insertRow(table.rows.length);
+        /*let cell1 = row.insertCell(0);
         let cell2 = row.insertCell(1);
         let cell3 = row.insertCell(2);
         cell1.innerHTML =
           "<input type = 'text' name = 'name' value = '장희정'>";
         cell2.innerHTML = "<input type = 'text' value =  " + index++ + ">";
-        cell3.innerHTML = "<input type = 'button' value = '삭제'>";
+        cell3.innerHTML = "<input type = 'button' value = '삭제'>";*/
+
+        row.insertCell(0).innerHTML =
+          "<input type = 'text' name = 'name' value = '장희정'/>";
+        row.insertCell(1).innerHTML =
+          `<input type = 'text' value = '${index++}' />`;
+        row.insertCell(2).innerHTML = "<input type = 'button' value = '삭제'/>";
+        //row.insertCell(2).innerHTML = "<input type = 'button' value = '삭제' onclick = 'del()'/>";
       });
 
+      ///////동적으로 생성된 element 삭제에 이벤트 등록하기//////////////////////////////////////////////////////
       document.body.addEventListener("click", function (event) {
         if (event.target.matches("[value=삭제]")) {
+          //matches : 일치하는것을 찾는것
           let tr = event.target.parentElement.parentElement; // button -> td -> tr
-          tr.parentElement.removeChild(tr);
+          tr.parentElement.removeChild(tr); //tr에 부모를 기준으로 자식을 삭제해라
         }
       });
     </script>
